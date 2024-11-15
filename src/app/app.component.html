@@ -1,11 +1,8 @@
-<div
-  class="grid h-screen w-screen place-content-center gap-4 border-yellow-500 bg-red-400 text-center text-white"
->
-  <p class="text-2xl">Welcome to {{ title }}</p>
-  <mat-divider />
-  <mat-slide-toggle>
-    <span class="text-white">Toggle me!</span>
-  </mat-slide-toggle>
-</div>
+<header>Header</header>
 
-<router-outlet></router-outlet>
+<section class="px-2">
+  <p class="text-blue-700 dark:text-red-700">{{ title }}</p>
+  <router-outlet></router-outlet>
+</section>
+
+<footer>Footer</footer>
