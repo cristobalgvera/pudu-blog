@@ -1,0 +1,10 @@
+<button
+  data-testid="theme-selector-button"
+  type="button"
+  class="inline-flex h-10 w-10 items-center justify-center hover:text-black dark:hover:text-white"
+  (click)="toggleTheme()"
+>
+  <mat-icon fontIcon="dark_mode" class="dark:!hidden" />
+  <mat-icon fontIcon="light_mode" class="!hidden dark:!inline" />
+  <span class="sr-only">Toggle dark mode</span>
+</button>
