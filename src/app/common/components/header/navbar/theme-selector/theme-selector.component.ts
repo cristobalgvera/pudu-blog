@@ -10,7 +10,6 @@ export const DARK_MODE_CLASS = 'dark';
 
 @Component({
   selector: 'app-theme-selector',
-  standalone: true,
   imports: [MatIconModule],
   templateUrl: './theme-selector.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

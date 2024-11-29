@@ -3,7 +3,6 @@ import { NavbarComponent } from './navbar';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [NavbarComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
