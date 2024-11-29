@@ -1,5 +1,7 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr/node';
+// @ts-expect-error - Angular is configured with `node` as `moduleResolution`
+import { render } from '@netlify/angular-runtime/common-engine';
 import { createCache } from 'cache-manager';
 import compression from 'compression';
 import express from 'express';
@@ -10,7 +12,12 @@ import bootstrap from './src/main.server';
 
 const CACHE_TTL = +(process.env['CACHE_TTL_IN_MIN'] ?? 5) * 60 * 1_000;
 
+const commonEngine = new CommonEngine();
 const cache = createCache({ ttl: CACHE_TTL });
+
+export async function netlifyCommonEngineHandler(): Promise<Response> {
+  return await render(commonEngine);
+}
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
@@ -18,8 +25,6 @@ export function app() {
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
-
-  const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
