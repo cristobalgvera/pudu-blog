@@ -2,10 +2,8 @@ name: Code Quality Check
 
 on:
   pull_request:
-    types:
-      - opened
-      - synchronize
     branches:
+      - develop
       - main
 
 jobs:
